@@ -157,7 +157,25 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  let fizzbuzzArr = [];
+  const is_divisible_by_3 = (number) => {
+    return number % 3 === 0;
+  }
+  const is_divisible_by_5 = (number) => {
+    return number % 5 === 0;
+  }
+  arr.forEach(element => {
+    if(is_divisible_by_3(element) && is_divisible_by_5(element)){
+      fizzbuzzArr.push("Fizz Buzz");
+    } else if (is_divisible_by_3(element)) {
+      fizzbuzzArr.push("Fizz");
+    } else if (is_divisible_by_5(element)){
+      fizzbuzzArr.push("Buzz");
+    } else {
+      fizzbuzzArr.push(element);
+    }
+  })
+  return fizzbuzzArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -211,7 +229,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
