@@ -1,5 +1,7 @@
 'use strict';
 
+const { filter, children } = require("cheerio/lib/api/traversing");
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -143,11 +145,11 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  str.reduce((accumulator, currentValue) => {
-
-    
-
+  let rev = str.split('').reduce((acc, val) => {
+    acc = val + acc
+    return acc
   }, '')
+  return rev
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -200,7 +202,16 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  let total = 0;
+  arr.reduce((acc, value) => {
+    acc = value.children
+    if(acc != undefined) {
+      return acc.forEach(element => {
+      total++;
+    })
+    }
+  }, 0)
+  return total
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -212,7 +223,13 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
+  let arraySize = 0;
+  let total = arr.reduce((accumulator, value, idx) => {
+    accumulator = value + accumulator;
+    arraySize++;
+    return accumulator
+  }, 0)
+  return total / arraySize;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -233,7 +250,14 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
+
+  let totalPrime = arr.reduce((accumulator, value) => {
+    if(isPrime(value)){
+      accumulator = accumulator + 1;
+    }
+    return accumulator;
+  }, 0)
+  return totalPrime;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -275,7 +299,11 @@ const snorlaxData = {
 };
 
 const extractStats = (snorlaxData) => {
-  // Solution code here...
+  let newObj = snorlaxData.stats.reduce((accumulator, value) => {
+    accumulator[value.stat.name] = value.baseStat
+    return accumulator;
+  }, {})
+  return newObj
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -288,9 +316,30 @@ Write a function named extractChildren that, given the array of characters from 
 2) Then, uses reduce to return an array of all the children's names in the filtered array
 ------------------------------------------------------------------------------------------------ */
 
+/*
+! CHAPTGPT SOLVED
+! WAS STUCK OVERTHINKING HOW TO FILTER THROUGHOUT ALL THE NAMES MINUS THE HOUSES RATHER THAN JUST FOCUSING ON THE PARENTS NAMES
+*/
+
+
+
+
 const extractChildren = (arr) => {
-  // Solution code here...
-};
+  // Step 1: Filter out characters whose names contain 'a'
+  const filteredCharacters = arr.filter(character => character.name.includes('a'));
+
+  // Step 2: Use reduce to accumulate children's names
+  const childrenNames = filteredCharacters.reduce((accumulator, character) => {
+    // Check if the character has a 'children' property
+    if (character.children) {
+      // Concatenate the children's names to the accumulator
+      return accumulator.concat(character.children);
+    }
+    return accumulator;
+  }, []); // Start with an empty array as the accumulator
+
+  return childrenNames;
+}
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -346,31 +395,31 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return the average of the numbers in the array', () => {
     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should return a count of the prime numbers in the array', () => {
     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return an object that contains the names of each stat as individual keys and the respective baseStats as values to those keys.', () => {
     expect(extractStats(snorlaxData)).toStrictEqual({'speed': 30, 'special-defense': 110, 'special-attack': 65});
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should return an array containing the names of the children', () => {
     expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
     expect(extractChildren(characters).length).toStrictEqual(10);
