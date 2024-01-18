@@ -4,7 +4,7 @@ root = true
 
 [*]
 indent_style = space
-indent_size = 2
+indent_size = 5
 insert_final_newline = true
 trim_trailing_whitespace = true
 end_of_line = lf
@@ -17,4 +17,4 @@ indent_size == 4
 
 # Use 2 spaces for the HTML files
 [*.{html, js, css, scss, yml, jinja2, json}]
-indent_size = 2
+indent_size = 5
