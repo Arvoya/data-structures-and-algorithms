@@ -90,6 +90,11 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
+  let newArr= []
+  for(let i =0; i <arr.length; i++){
+    newArr.push(arr[i])
+  }
+  return newArr;
 
 };
 
@@ -103,8 +108,10 @@ Write a function named listFoods that takes in the recipe and returns a new arra
 
 Use slice for this function, maybe more than once. The Array.indexOf() method may also be helpful.
 
-Do not use split for this function.
+! Do not use split for this function.
 ------------------------------------------------------------------------------------------------ */
+
+
 
 const gruffaloCrumble = {
   name: 'How to make a Gruffalo Crumble',
@@ -137,7 +144,13 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  recipe.ingredients.forEach(string => {
+    let spacePosition1 = string.indexOf(' ')
+    let firstSlice = string.slice(spacePosition1 + 1)
+    let spacePosition2 = firstSlice.indexOf(' ')
+    result.push(firstSlice.slice(spacePosition2 + 1))
+
+  })
   return result;
 };
 
@@ -295,7 +308,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
     expect(listFoods(gruffaloCrumble).length).toStrictEqual(11);
