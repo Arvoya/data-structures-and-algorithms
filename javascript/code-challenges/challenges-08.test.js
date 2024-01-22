@@ -25,7 +25,17 @@ let starWarsPeople = [
 ];
 
 const sortStarWarsCharacters = (starWarsArr) => {
-  // Solution code here...
+     return starWarsArr.sort((a, b) => {
+         let c = Number(a.height);
+         let d = Number(b.height);
+          if(c > d){
+               return -1
+          } else if (c === d){
+               return 0;
+          } else if (c < d){
+               return 1;
+          }
+     })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,10 +43,12 @@ CHALLENGE 2
 
 Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index.
 ------------------------------------------------------------------------------------------------ */
-
+// testing code
 const removeThree = (idx, arr) => {
-  // Solution code here...
+  arr.splice(idx, 3);
+  return arr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -251,7 +263,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return an array with three items removed', () => {
     expect(removeThree(2, [1, 2, 3, 4, 5, 6, 7, 8])).toStrictEqual([1, 2, 6, 7, 8]);
   });
