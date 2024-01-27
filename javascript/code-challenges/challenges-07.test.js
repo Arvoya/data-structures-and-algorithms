@@ -290,6 +290,7 @@ function Meeting(dayOfWeek, start, end) {
   this.start = start;
   this.end = end;
 }
+
 const meetings = [
   new Meeting('Monday', '0900', '1000'),
   new Meeting('Wednesday', '1300', '1500'),
