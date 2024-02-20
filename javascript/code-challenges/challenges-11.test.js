@@ -83,6 +83,9 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
 
+  let testArr =  arr.filter(string => string.includes(':)'))
+
+  return testArr.length === arr.length
 };
 
 /* ------------------------------------------------------------------------------------------------
