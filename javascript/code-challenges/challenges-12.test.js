@@ -164,8 +164,14 @@ CHALLENGE 6
 Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the character who is the shortest in height.
 ------------------------------------------------------------------------------------------------ */
 
+// ! Big Help from GitHub Copilot
+// * I initially was using a forEach and filter to solve it, but reduce makes so much more sense when I asked copilot for its input.
 let findShortest = (data) => {
-  // Solution code here...
+  let shortestCharacter = data.reduce((shortest, character) => {
+    return parseInt(character.height) < parseInt(shortest.height) ? character : shortest;
+  });
+
+  return shortestCharacter.name;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -228,7 +234,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return the name of the shortest character', () => {
     expect(findShortest(starWarsData)).toStrictEqual('R2-D2');
   });
