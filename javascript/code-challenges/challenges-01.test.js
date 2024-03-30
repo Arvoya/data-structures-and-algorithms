@@ -25,9 +25,7 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 
 const addExclamation = (arr) => {
      let newArr = [];
-     console.log("I am array", arr);
      arr.forEach((element) => newArr.push(`${element}!`));
-     console.log("I am new array", newArr);
 
      return newArr;
 };
@@ -41,7 +39,12 @@ Use `forEach` to loop over the input array. The modified strings should each be 
 ------------------------------------------------------------------------------------------------ */
 
 const allUpperCase = (arr) => {
-     // Solution code here...
+     let newArr = [];
+     console.log(arr);
+     arr.forEach((element) => newArr.push(element.toUpperCase()));
+     console.log(newArr, "newArr");
+
+     return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -154,7 +157,7 @@ describe("Testing challenge 2", () => {
      });
 });
 
-xdescribe("Testing challenge 3", () => {
+describe("Testing challenge 3", () => {
      test("It should return an array of uppercase strings", () => {
           expect(allUpperCase(["hi", "how", "are", "you"])).toStrictEqual([
                "HI",
