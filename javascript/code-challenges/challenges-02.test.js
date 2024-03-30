@@ -149,7 +149,7 @@ const snorlaxAbilities = {
 };
 
 const extractAbilities = (arr) => {
-     // Solution code here...
+     return arr.map((obj) => obj.ability.name);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -332,7 +332,7 @@ describe("Testing challenge 8", () => {
      });
 });
 
-xdescribe("Testing challenge 9", () => {
+describe("Testing challenge 9", () => {
      test("It should return an array containing only the ability names", () => {
           expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual([
                "gluttony",
