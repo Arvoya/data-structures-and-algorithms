@@ -40,9 +40,7 @@ Use `forEach` to loop over the input array. The modified strings should each be 
 
 const allUpperCase = (arr) => {
      let newArr = [];
-     console.log(arr);
      arr.forEach((element) => newArr.push(element.toUpperCase()));
-     console.log(newArr, "newArr");
 
      return newArr;
 };
@@ -58,11 +56,16 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
-     // Solution code here...
+     let newWord = word.toUpperCase() + "!";
+     return newWord;
 };
 
 const speaker = (words, callback) => {
-     // Solution code here...
+     let newArr = [];
+
+     words.forEach((element) => newArr.push(callback(element)));
+
+     return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -168,7 +171,7 @@ describe("Testing challenge 3", () => {
      });
 });
 
-xdescribe("Testing challenge 4", () => {
+describe("Testing challenge 4", () => {
      test('It should provide an array of strings, that get uppercased, and a "!" at the end', () => {
           expect(speaker(["hello", "301", "students"], greeting)).toStrictEqual(
                ["HELLO!", "301!", "STUDENTS!"],
