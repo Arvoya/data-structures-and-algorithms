@@ -19,7 +19,8 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const typeNum = (arr) => {
-     // Solution code here...
+     let newArr = arr.filter((element) => typeof element === "number");
+     return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -195,7 +196,7 @@ describe("Testing challenge 1", () => {
      });
 });
 
-xdescribe("Testing challenge 2", () => {
+describe("Testing challenge 2", () => {
      test("It should return an array containing only numbers", () => {
           expect(typeNum([1, "bob", 3])).toStrictEqual([1, 3]);
           expect(typeNum([1, "bob", 3]).length).toStrictEqual(2);
