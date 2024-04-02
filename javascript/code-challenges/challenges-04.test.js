@@ -1,18 +1,18 @@
-'use strict';
+"use strict";
 
 /* ------------------------------------------------------------------------------------------------
 These objects and arrays are global and will be used for each assignment. DO NOT ALTER THEM
 ------------------------------------------------------------------------------------------------ */
 
-const people = ['Kookla', 'Fran', 'Ollie'];
+const people = ["Kookla", "Fran", "Ollie"];
 
 const stuff = {
-  tv: 'huge',
-  radio: 'old',
-  toys: 57,
-  toothbrush: 'frayed',
-  cars: ['Toyota', 'Mazda']
-}
+     tv: "huge",
+     radio: "old",
+     toys: 57,
+     toothbrush: "frayed",
+     cars: ["Toyota", "Mazda"],
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
@@ -27,13 +27,7 @@ Prove that the original people array is unchanged
 
 ------------------------------------------------------------------------------------------------ */
 
-const addPeople = (arr) => {
-  let copyArr = arr;
-  copyArr = ['Odie', ...arr];
-  copyArr = [...copyArr, 'Garfield']
-
-  return copyArr;
-};
+const addPeople = (arr) => {};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -49,15 +43,8 @@ Ensure that the original people array and stuff objects are unchanged
 ------------------------------------------------------------------------------------------------ */
 
 const setState = (arr, obj) => {
-
-  let stateObj = {
-    people: [...arr],
-    stuff: {...obj}
-  }
-
-  return stateObj;
+     // Solution code here...
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -76,16 +63,8 @@ Ensure that the original people array and stuff objects are unchanged
 ------------------------------------------------------------------------------------------------ */
 
 const newState = (arr, obj) => {
-
-  let stateObj = {
-    people: [...arr],
-    stuff: {...obj, toothbrush: 'brand new', toys: obj.toys +1, cars: [...obj.cars, 'Ford']}
-  }
-
-  return stateObj;
-
+     // Solution code here...
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -97,58 +76,57 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-03.test.js
 ------------------------------------------------------------------------------------------------ */
 
-
-describe('Testing challenge 1', () => {
-  test('It should return a copy of the people array with 2 new values', () => {
-    const orig = ['Kookla', 'Fran', 'Ollie'];
-    const expected = ['Odie', 'Kookla', 'Fran', 'Ollie', 'Garfield'];
-    const copy = addPeople(orig);
-    expect(copy).toStrictEqual(expected);
-    expect(orig).toStrictEqual(people);
-  });
+describe("Testing challenge 1", () => {
+     test("It should return a copy of the people array with 2 new values", () => {
+          const orig = ["Kookla", "Fran", "Ollie"];
+          const expected = ["Odie", "Kookla", "Fran", "Ollie", "Garfield"];
+          const copy = addPeople(orig);
+          expect(copy).toStrictEqual(expected);
+          expect(orig).toStrictEqual(people);
+     });
 });
 
-describe('Testing challenge 2', () => {
-  test('It should return a state object with 2 keys', () => {
-    const originalPeople = ['Kookla', 'Fran', 'Ollie'];
-    const originalStuff = {
-      tv: 'huge',
-      radio: 'old',
-      toys: 57,
-      toothbrush: 'frayed',
-      cars: ['Toyota', 'Mazda']
-    }
-    const expected = {people: originalPeople, stuff: originalStuff};
-    const copy = setState(originalPeople, originalStuff);
-    expect(copy).toStrictEqual(expected);
-    expect(originalPeople).toStrictEqual(people);
-    expect(originalStuff).toStrictEqual(stuff);
-  });
+xdescribe("Testing challenge 2", () => {
+     test("It should return a state object with 2 keys", () => {
+          const originalPeople = ["Kookla", "Fran", "Ollie"];
+          const originalStuff = {
+               tv: "huge",
+               radio: "old",
+               toys: 57,
+               toothbrush: "frayed",
+               cars: ["Toyota", "Mazda"],
+          };
+          const expected = { people: originalPeople, stuff: originalStuff };
+          const copy = setState(originalPeople, originalStuff);
+          expect(copy).toStrictEqual(expected);
+          expect(originalPeople).toStrictEqual(people);
+          expect(originalStuff).toStrictEqual(stuff);
+     });
 });
 
-describe('Testing challenge 3', () => {
-  test('It should return a state object with 2 keys and new values', () => {
-    const originalPeople = ['Kookla', 'Fran', 'Ollie'];
-    const originalStuff = {
-      tv: 'huge',
-      radio: 'old',
-      toys: 57,
-      toothbrush: 'frayed',
-      cars: ['Toyota', 'Mazda']
-    }
-    const expected = {
-      people: ['Kookla', 'Fran', 'Ollie'],
-      stuff: {
-        tv: 'huge',
-        radio: 'old',
-        toys: 58,
-        toothbrush: 'brand new',
-        cars: ['Toyota', 'Mazda', 'Ford']
-      }
-    }
-    const copy = newState(originalPeople, originalStuff);
-    expect(copy).toStrictEqual(expected);
-    expect(originalPeople).toStrictEqual(people);
-    expect(originalStuff).toStrictEqual(stuff);
-  });
+xdescribe("Testing challenge 3", () => {
+     test("It should return a state object with 2 keys and new values", () => {
+          const originalPeople = ["Kookla", "Fran", "Ollie"];
+          const originalStuff = {
+               tv: "huge",
+               radio: "old",
+               toys: 57,
+               toothbrush: "frayed",
+               cars: ["Toyota", "Mazda"],
+          };
+          const expected = {
+               people: ["Kookla", "Fran", "Ollie"],
+               stuff: {
+                    tv: "huge",
+                    radio: "old",
+                    toys: 58,
+                    toothbrush: "brand new",
+                    cars: ["Toyota", "Mazda", "Ford"],
+               },
+          };
+          const copy = newState(originalPeople, originalStuff);
+          expect(copy).toStrictEqual(expected);
+          expect(originalPeople).toStrictEqual(people);
+          expect(originalStuff).toStrictEqual(stuff);
+     });
 });
