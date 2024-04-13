@@ -37,23 +37,58 @@ class LinkedList {
           }
           this.head = node;
      }
+
      //NOTE: Add new value to the tail
      append(value) {
           let node = new Node(value);
+          if (this.head === null) {
+               this.head = node;
+          } else {
+               let current = this.head;
+               while (current.next !== null) {
+                    current = current.next;
+               }
+               current.next = node;
+          }
+     }
+
+     //NOTE: Add value within LinkedList
+     insertBefore(targetValue, value) {
+          let newNode = new Node(value);
+          if (this.head === null) {
+               return;
+          }
+
+          if (this.head.value === targetValue) {
+               newNode.next = this.head;
+               this.head = newNode;
+               return;
+          }
+
           let current = this.head;
-          while (current.next instanceof Node) {
+          while (current.next !== null && current.next.value !== targetValue) {
                current = current.next;
           }
-          current.next = node;
+
+          if (current.next !== null) {
+               newNode.next = current.next;
+               current.next = newNode;
+          }
+     }
+
+     insertAfter(targetValue, value) {
+          let newNode = new Node(value);
+          let current = this.head;
+
+          while (current !== null && current.value !== targetValue) {
+               current = current.next;
+          }
+
+          if (current !== null) {
+               newNode.next = current.next;
+               current.next = newNode;
+          }
      }
 }
-
-// let list = new LinkedList();
-//
-// list.prepend("sandwhich");
-// list.append("first aid");
-// list.prepend("boat");
-//
-// list.traverse();
 
 module.exports = LinkedList;
