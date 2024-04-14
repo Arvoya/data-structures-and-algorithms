@@ -24,11 +24,11 @@ exist.
 
 ### Append | Insert Before | Insert After
 
-#### Whiteboard
+**WhiteBoard:**
 
 ![whiteboard](./assets/before-after.png)
 
-#### Approach & Efficiency
+**Aproach & Efficiency:**
 
 This one was a bit tricky, and I ended up using help from AI. I think I understand
 the solution, but I'll be watching some lectures on linked lists.
@@ -37,7 +37,7 @@ As for my efficiency, I think I did well. I was able to get the tests to pass
 and the linked list to work as expected. I think the big O is O(n) for all of
 these methods.
 
-#### Solution
+**Solution:**
 
 ```javascript
 
@@ -92,4 +92,45 @@ these methods.
                current.next = newNode;
           }
      }
+```
+
+### Kth From End
+
+**WhiteBoard:**
+
+**Approach & Efficiency:**
+
+The solution I initially came up with was not working. I ran into the issue of thinking
+I knew how to save the tail property. I ended up having to look up the solution.
+I found this method to be interesting, although maybe not the most efficient. I think
+the big O is O(n) for this method.
+
+**Solution:**
+
+```javascript
+kthFromEnd(k) {
+    if (k < 0) {
+        return null;
+    }
+
+    let fast = this.head;
+    let slow = this.head;
+    let index = 0;
+
+    while (index < k && fast !== null) {
+        fast = fast.next;
+        index++;
+    }
+
+    if (fast === null && index < k) {
+        return null;
+    }
+
+    while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+
+    return fast === null ? null : slow.value;
+}
 ```
