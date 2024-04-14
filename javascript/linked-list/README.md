@@ -26,7 +26,7 @@ exist.
 
 **WhiteBoard:**
 
-![whiteboard](./assets/before-after.png)
+![whiteboard](./images/append-before-after.png)
 
 **Aproach & Efficiency:**
 
@@ -97,6 +97,8 @@ these methods.
 ### Kth From End
 
 **WhiteBoard:**
+
+![whiteboard](./images/kth-from.png)
 
 **Approach & Efficiency:**
 
