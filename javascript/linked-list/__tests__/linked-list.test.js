@@ -118,4 +118,82 @@ describe("Linked List", () => {
           list.append("d");
           expect(list.kthFromEnd(2)).toBe("b"); // k is 2, should return the third last item
      });
+
+     test("zips two lists of the same length", () => {
+          const list1 = new LinkedList();
+          const list2 = new LinkedList();
+
+          list1.append("1");
+          list1.append("3");
+          list1.append("5");
+
+          list2.append("2");
+          list2.append("4");
+          list2.append("6");
+
+          const result = LinkedList.zipLists(list1, list2); // Correctly using static method
+          expect(result.traverse()).toBe("1, 2, 3, 4, 5, 6");
+     });
+
+     test("zips two lists when the first is longer", () => {
+          const list1 = new LinkedList();
+          const list2 = new LinkedList();
+
+          list1.append("1");
+          list1.append("3");
+          list1.append("5");
+          list1.append("7");
+
+          list2.append("2");
+          list2.append("4");
+
+          const result = LinkedList.zipLists(list1, list2); // Correctly using static method
+          expect(result.traverse()).toBe("1, 2, 3, 4, 5, 7");
+     });
+
+     test("zips two lists when the second is longer", () => {
+          const list1 = new LinkedList();
+          const list2 = new LinkedList();
+
+          list1.append("1");
+          list1.append("3");
+
+          list2.append("2");
+          list2.append("4");
+          list2.append("6");
+          list2.append("8");
+
+          const result = LinkedList.zipLists(list1, list2); // Correctly using static method
+          expect(result.traverse()).toBe("1, 2, 3, 4, 6, 8");
+     });
+
+     test("zips correctly when the first list is empty", () => {
+          const list1 = new LinkedList();
+          const list2 = new LinkedList();
+
+          list2.append("2");
+          list2.append("4");
+
+          const result = LinkedList.zipLists(list1, list2); // Correctly using static method
+          expect(result.traverse()).toBe("2, 4");
+     });
+
+     test("zips correctly when the second list is empty", () => {
+          const list1 = new LinkedList();
+          const list2 = new LinkedList();
+
+          list1.append("1");
+          list1.append("3");
+
+          const result = LinkedList.zipLists(list1, list2); // Correctly using static method
+          expect(result.traverse()).toBe("1, 3");
+     });
+
+     test("returns an empty string when both lists are empty", () => {
+          const list1 = new LinkedList();
+          const list2 = new LinkedList();
+
+          const result = LinkedList.zipLists(list1, list2); // Correctly using static method
+          expect(result.traverse()).toBe("");
+     });
 });

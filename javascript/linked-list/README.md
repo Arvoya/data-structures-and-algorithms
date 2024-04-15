@@ -9,16 +9,7 @@ list to work as expected.
 
 ## Tests
 
-- Can successfully instantiate an empty linked list
-- Can properly insert into the linked list
-- The head property will properly point to the first node in the linked list
-- Can properly insert multiple nodes into the linked list
-- Will return true when finding a value within the linked list that exists
-- Will return false when searching for a value in the linked list that does not
-exist.
-- Can properly return a collection of all the values that exist in the linked list
-- Can insert a node before a node located in a linked list
-- Can insert a node after a node located in a linked list
+> npm test linked-list
 
 ## Challenges
 
@@ -134,5 +125,55 @@ kthFromEnd(k) {
     }
 
     return fast === null ? null : slow.value;
+}
+```
+
+### Zip Lists
+
+**WhiteBoard:**
+
+![whiteboard](./images/zip-lists.png)
+
+**Approach & Efficiency:**
+
+I've gone through a couple different ones, but I wasn't able to meet all the requirements.
+I decided to get help to better understand how this would work, and then I was told
+about `static` methods. I was able to get the tests to pass and the linked list to
+work as expected.
+
+**Solution:**
+
+```javascript
+static zipLists(list1, list2) {
+        const zippedList = new LinkedList();
+        let current1 = list1.head;
+        let current2 = list2.head;
+        let tail = null;
+
+        while (current1 || current2) {
+            if (current1) {
+                if (tail) {
+                    tail.next = current1;
+                } else {
+                    zippedList.head = current1;
+                }
+                tail = current1;
+                current1 = current1.next;
+            }
+
+            if (current2) {
+                if (tail) {
+                    tail.next = current2;
+                } else {
+                    zippedList.head = current2;
+                }
+                tail = current2;
+                current2 = current2.next;
+            }
+        }
+
+        zippedList.tail = tail;
+
+        return zippedList;
 }
 ```

@@ -111,6 +111,40 @@ class LinkedList {
           // If fast was able to reach the end, return the value at slow
           return fast === null ? null : slow.value;
      }
+     static zipLists(list1, list2) {
+          const zippedList = new LinkedList();
+          let current1 = list1.head;
+          let current2 = list2.head;
+          let tail = null;
+
+          // Alternatingly append nodes from both lists to the new list
+          while (current1 || current2) {
+               if (current1) {
+                    if (tail) {
+                         tail.next = current1;
+                    } else {
+                         zippedList.head = current1;
+                    }
+                    tail = current1;
+                    current1 = current1.next;
+               }
+
+               if (current2) {
+                    if (tail) {
+                         tail.next = current2;
+                    } else {
+                         zippedList.head = current2;
+                    }
+                    tail = current2;
+                    current2 = current2.next;
+               }
+          }
+
+          // Set the tail of the new list
+          zippedList.tail = tail;
+
+          return zippedList;
+     }
 }
 
 module.exports = LinkedList;
