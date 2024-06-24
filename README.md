@@ -21,4 +21,8 @@ To run your tests
 
 - Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
 
+#### JavaScript
+
 [stacks-and-queues](./javascript/stacks-queues/README.md)
+
+[Multi-Bracket Validation](./javascript/stack-queue-brackets/README.md)

@@ -19,7 +19,7 @@ Thereare 3 types of brackets:
 
 ## Approach & Efficiency
 
-This methods within these classes are all O(1) time complexity.
+* This approach is O(n) space & time complexity.
 
 ## Solution
 
