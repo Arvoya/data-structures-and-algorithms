@@ -1,32 +1,35 @@
-export function validateBrackets(str) {
-     const roundBrackets = "open";
-     const squareBrackets = "open";
-     const curlyBrackets = "open";
+function validateBrackets(str) {
+     let roundBrackets = 0;
+     let squareBrackets = 0;
+     let curlyBrackets = 0;
 
      const array = str.split("");
 
      for (let i = 0; i < array.length; i++) {
           if (array[i] === "(") {
-               roundBrackets = "open";
+               roundBrackets++;
           } else if (array[i] === ")") {
-               roundBrackets = "close";
+               roundBrackets--;
           } else if (array[i] === "[") {
-               squareBrackets = "open";
+               squareBrackets++;
           } else if (array[i] === "]") {
-               squareBrackets = "close";
+               squareBrackets--;
           } else if (array[i] === "{") {
-               curlyBrackets = "open";
+               curlyBrackets++;
           } else if (array[i] === "}") {
-               curlyBrackets = "close";
+               curlyBrackets--;
+          }
+
+          // If any bracket count goes negative, it means they are not balanced
+          if (roundBrackets < 0 || squareBrackets < 0 || curlyBrackets < 0) {
+               return false;
           }
      }
 
-     if (
-          roundBrackets === "open" ||
-          squareBrackets === "open" ||
-          curlyBrackets === "open"
-     ) {
-          return false;
+     if (roundBrackets === 0 && squareBrackets === 0 && curlyBrackets === 0) {
+          return true;
      }
-     return true;
+     return false;
 }
+
+module.exports = { validateBrackets };
