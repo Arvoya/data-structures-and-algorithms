@@ -74,8 +74,8 @@ class Queue {
      }
 
      isEmpty() {
-          if (this.front === null && this.back === null) {
-               return true;
-          }
+          return this.front === null;
      }
 }
+
+module.exports = { Node, Stack, Queue };
