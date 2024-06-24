@@ -18,7 +18,7 @@ class Stack {
 
      pop() {
           if (this.isEmpty()) {
-               throw new StackEmptyException("Stack is empty. Cannot pop.");
+               return "Queue is empty. Cannot peek.";
           }
           const poppedValue = this.top.value;
           this.top = this.top.next;
@@ -27,12 +27,55 @@ class Stack {
 
      peek() {
           if (this.isEmpty()) {
-               throw new StackEmptyException("Stack is empty. Cannot peek.");
+               return "Queue is empty. Cannot peek.";
           }
           return this.top.value;
      }
 
      isEmpty() {
           return this.top === null;
+     }
+}
+
+class Queue {
+     constructor() {
+          this.front = null;
+          this.back = null;
+     }
+
+     enqueue(value) {
+          const newNode = new Node(value);
+          if (this.isEmpty()) {
+               this.front = newNode;
+               this.back = newNode;
+          } else {
+               this.back.next = newNode;
+               this.back = newNode;
+          }
+     }
+
+     dequeue() {
+          if (this.isEmpty()) {
+               return "Queue is empty. Cannot peek.";
+          }
+          const dequeuedValue = this.front.value;
+          this.front = this.front.next;
+          if (!this.front) {
+               this.back = null;
+          }
+          return dequeuedValue;
+     }
+
+     peek() {
+          if (this.isEmpty()) {
+               return "Queue is empty. Cannot peek.";
+          }
+          return this.front.value;
+     }
+
+     isEmpty() {
+          if (this.front === null && this.back === null) {
+               return true;
+          }
      }
 }
