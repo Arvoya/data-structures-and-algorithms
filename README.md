@@ -30,3 +30,5 @@ To run your tests
 [Trees](./javascript/trees/README.md)
 
 [Tree-Max](./javascript/tree-max/README.md)
+
+[Tree-Breadth-First](./javascript/tree-breadth-first/README.md)
