@@ -51,7 +51,10 @@ class BinaryTree {
      }
 
      findMax() {
-          let maxNumb = 0;
+          if (!this.root) {
+               return "no tree found";
+          }
+          let maxNumb = this.root.value;
           const traverse = (node) => {
                if (node) {
                     if (node.value > maxNumb) {
@@ -65,3 +68,45 @@ class BinaryTree {
           return maxNumb;
      }
 }
+
+class BinarySearchTree extends BinaryTree {
+     add(value) {
+          const newNode = new Node(value);
+          if (!this.root) {
+               this.root = newNode;
+          } else {
+               let current = this.root;
+               while (current) {
+                    if (value > current.value) {
+                         if (!current.right) {
+                              current.right = newNode;
+                              return;
+                         }
+                         current = current.right;
+                    } else {
+                         if (!current.left) {
+                              current.left = newNode;
+                              return;
+                         }
+                         current = current.left;
+                    }
+               }
+          }
+     }
+     contains(value) {
+          let current = this.root;
+          while (current) {
+               if (current.value === value) {
+                    return true;
+               }
+               if (value > current.value) {
+                    current = current.right;
+               } else {
+                    current = current.left;
+               }
+          }
+          return false;
+     }
+}
+
+module.exports = { Node, BinaryTree, BinarySearchTree };
