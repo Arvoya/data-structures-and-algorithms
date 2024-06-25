@@ -32,3 +32,5 @@ To run your tests
 [Tree-Max](./javascript/tree-max/README.md)
 
 [Tree-Breadth-First](./javascript/tree-breadth-first/README.md)
+
+[Tree-Fizz-Buzz](./javascript/tree-fizz-buzz/README.md)
