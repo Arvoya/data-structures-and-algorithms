@@ -50,3 +50,43 @@ class BinaryTree {
           return result;
      }
 }
+
+class BinarySearchTree extends BinaryTree {
+     add(value) {
+          const newNode = new Node(value);
+          if (!this.root) {
+               this.root = newNode;
+          } else {
+               let current = this.root;
+               while (current) {
+                    if (value > current.value) {
+                         if (!current.right) {
+                              current.right = newNode;
+                              return;
+                         }
+                         current = current.right;
+                    } else {
+                         if (!current.left) {
+                              current.left = newNode;
+                              return;
+                         }
+                         current = current.left;
+                    }
+               }
+          }
+     }
+     contains(value) {
+          let current = this.root;
+          while (current) {
+               if (current.value === value) {
+                    return true;
+               }
+               if (value > current.value) {
+                    current = current.right;
+               } else {
+                    current = current.left;
+               }
+          }
+          return false;
+     }
+}
