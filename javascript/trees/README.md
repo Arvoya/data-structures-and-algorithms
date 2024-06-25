@@ -21,7 +21,7 @@
       - Return: nothing
       - Adds a new node with that value in the correct location in the binary search
       tree.
-      - Contains
+    - Contains
       - Argument: value
       - Returns: boolean indicating whether or not the value is in the tree at least
       once.
@@ -32,7 +32,8 @@
 
 ## Approach & Efficiency
 
-- This approach is O(n) space & time complexity.
+- Being that is the making of a tree, the time complexity is O(n) and the space
+complexity is O(1).
 
 ## Solution
 
