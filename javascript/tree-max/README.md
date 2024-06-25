@@ -14,8 +14,7 @@ Write the following method for the Binary Tree class
 
 ## Approach & Efficiency
 
-- Being that is the making of a tree, the time complexity is O(n) and the space
-complexity is O(1).
+- With the new method of findMax it has a time complexity of O(n) and a space complexity of O(1).
 
 ## Solution
 
