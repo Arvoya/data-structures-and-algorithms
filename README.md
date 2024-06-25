@@ -28,3 +28,5 @@ To run your tests
 [Multi-Bracket Validation](./javascript/stack-queue-brackets/README.md)
 
 [Trees](./javascript/trees/README.md)
+
+[Tree-Max](./javascript/tree-max/README.md)
